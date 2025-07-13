@@ -1,0 +1,100 @@
+body{
+    background-color:cadetblue;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    }
+.header{
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    height: 300px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.header h1{
+    color:burlywood ;
+    font-size: 2.5em;
+    margin: 10px;
+}
+.header p{
+    color: white;
+    font-size: 1.2em;
+    margin: 10px;
+}
+.choices{
+    text-align: center;
+    margin-top: 75px;
+    
+    background-color: #333;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 20px;
+
+}
+.choices img{
+    width: 75px;
+    height: 75px;
+    margin: 10px;
+    cursor: pointer;
+
+    transition: transform 0.2s;
+}
+.choices img:hover{
+    transform: scale(1.1);
+}
+.choices button{
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.choices button:hover{
+    background-color:darkcyan;
+}
+.choices button:active{
+    transform: scale(0.95);
+}
+.choices p{
+    font-size: 1.2em;
+    color: white;
+}
+.result{
+    text-align: center;
+    margin-top: 0px;
+    background-color: #333;
+    margin-left: 30px;
+    margin-right: 30px;
+   
+    padding: 20px;
+}
+.result p{
+    color: burlywood;
+    font-size: 2em;
+}
+.score{
+    text-align: center;
+  
+    background-color: #333;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 20px;
+}
+.score p{
+    color: burlywood;
+    font-size: 1.5em;
+}
+.result img{
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+}
