@@ -1,0 +1,120 @@
+body{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url('menu-images/mainback.jpg');
+    background-size: cover;        
+    background-repeat: no-repeat;  
+    background-position: unset;  
+}
+.container{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+    background-color:aquamarine;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+     border: 4px solid #222;
+    box-shadow:
+        0 0 0 4px #fff,
+        8px 8px 0 0 #222,
+        -8px 8px 0 0 #222,
+        8px -8px 0 0 #222,
+        -8px -8px 0 0 #222;
+    border-radius: 0;
+}
+.container h1{
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+     font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.container p{
+    color: #555;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+     font-family: "Rubik Pixels", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+#gameContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    background-image: url('menu-images/8-bit-wallpaper-preview.jpg');
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     border: 4px solid #222;
+    box-shadow:
+        0 0 0 4px #fff,
+        8px 8px 0 0 #222,
+        -8px 8px 0 0 #222,
+        8px -8px 0 0 #222,
+        -8px -8px 0 0 #222;
+    border-radius: 0;
+}
+#gameContainer button{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+#mainjeux{
+   align-items: center;
+   text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+#mainjeux img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+#mainjeux p {
+    font-family: "Rubik Pixels", system-ui;
+  font-weight: 400;
+  font-style: normal;
+    color:burlywood;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+#mainjeux p:first-child {
+     font-family: "Jersey 15", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    color:darkkhaki;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: center;
+}
+#mainjeux p:last-child {
+   font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 10px;
+    text-align: center;
+}
