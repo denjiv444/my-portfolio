@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Candle Bliss</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #c8a165;
+            --primary-blue: #d2b48c;
+            --light-purple: #e8cfae;
+            --light-blue: #f0d8b8;
+            --background: #f8f3ef;
+            --card-bg: #ffffff;
+            --text-dark: #4a4031;
+            --text-light: #8b7d6b;
+            --shadow-sm: 0 2px 4px rgba(200, 161, 101, 0.05);
+            --shadow-md: 0 4px 8px rgba(200, 161, 101, 0.08);
+            --shadow-lg: 0 8px 16px rgba(200, 161, 101, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-right: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: var(--light-purple);
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+        }
+
+        .filter-button {
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .reset-button {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            color: var(--primary-purple);
+            border: 1px solid var(--primary-purple);
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .reset-button:hover {
+            background: #f5f3ff;
+        }
+
+        /* Product Grid */
+        .featured {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+       
+       
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.25rem 0.75rem;                                                                                                                                                                                       
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--light-purple);
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .product-info .price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .product-info .description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .add-to-cart {
+            display: inline-block;
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 0;
+            grid-column: 1 / -1;
+        }
+
+        .empty-state svg {
+            width: 100px;
+            height: 100px;
+            color: var(--light-purple);
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .empty-state button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .empty-state button:hover {
+            opacity: 0.9;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Footer */
+        footer {
+            background: #463426;
+            color: white;
+            padding: 3rem 0 0;
+            margin: 0;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-links svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes countUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .footer-col h3 {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #c17f59;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-col h3:hover::after {
+            width: 80px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.25rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Value Card */
+        .value-card {
+            background: var(--card-bg);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-links {
+                gap: 1rem;
+            }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .logo img{
+            width: 30px;
+           height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="images/logo o sf.png" alt="">
+            <span>Candle Bliss</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html" class="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="page-header">
+            <h1>Our Candle Collection</h1>
+            <p>Discover our premium selection of handcrafted candles, each made with natural ingredients and designed to create the perfect ambiance.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <div class="filter-group">
+                <label for="filter">Scent:</label>
+                <select id="filter">
+                    <option value="">All Scents</option>
+                    <option value="Animals">Animals</option>
+                    <option value="Vanilla">Vanilla</option>
+                    <option value="Ocean">Ocean</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="Garden">Garden</option>
+                    <option value="Bliss">Bliss</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Cinnamon">Cinnamon</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Books">Books</option>
+                    <option value="Berry">Berry</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="max-price">Max Price:</label>
+                <input type="number" id="max-price" placeholder="Any price" min="0">
+            </div>
+            <button id="filter-button" class="filter-button">Apply Filters</button>
+            <button id="reset-button" class="reset-button">Reset</button>
+        </div>
+<section class="featured">
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/im1.jpg" alt="Bougie parfumée Enchanted Garden" width="300" height="300" loading="lazy" aria-label="Bougie parfumée Enchanted Garden" class="product-image">
+            <div class="product-info">
+                <h3>Enchanted Garden</h3>
+                <div class="price">$20.99</div>
+                <p class="description">Handcrafted with real dried flowers, this candle brings the beauty of a blooming garden into your home. Soft, floral, and perfect for a relaxing vibe.</p>
+                <button class="add-to-cart" data-id="1" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im2.jpg" alt="Autumn Forest" class="product-image">
+            <div class="product-info">
+                <h3>Autumn Forest</h3>
+                <div class="price">$21.99</div>
+                <p class="description">Rich in earthy tones and natural textures, this candle captures the cozy essence of fall. A perfect touch of nature for warm, peaceful moments.</p>
+                <button class="add-to-cart" data-id="2">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im3.jpg" alt="Divine Elegance" class="product-image">
+            <div class="product-info">
+                <h3>Divine Elegance</h3>
+                <div class="price">$18.99</div>
+                <p class="description">Graceful and artistic, these sculpted candles blend luxury and femininity. Gold accents add a refined, elegant glow to your space.</p>
+                <button class="add-to-cart" data-id="3">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im4.jpg" alt="Daisy Glow Candle" class="product-image">
+            <div class="product-info">
+                <h3> Daisy Glow</h3>
+                <div class="price">$17.99</div>
+                <p class="description">Elegant daisy-topped candles in sleek black vessels, perfect for a serene ambiance.</p>
+                <button class="add-to-cart" data-id="4">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im5.jpg" alt="Fairy Whisper Candle" class="product-image">
+            <div class="product-info">
+                <h3>Fairy Whisper</h3>
+                <div class="price">$25.99</div>
+                <p class="description">Magical blue candles with pineapple and sage scents, blooming with charm.</p>
+                <button class="add-to-cart" data-id="5">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im6.jpg" alt="Mom's Bliss Candle" class="product-image">
+            <div class="product-info">
+                <h3>Mom's Bliss</h3>
+                <div class="price">$23.99</div>
+                <p class="description">Peony and plum-scented candles with crystals, a loving gift for Mom.</p>
+                <button class="add-to-cart" data-id="6">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im7.jpg" alt="Bear Hug Candle" class="product-image">
+            <div class="product-info">
+                <h3>Bear Hug</h3>
+                <div class="price">$27.99</div>
+                <p class="description">Adorable teddy bear candles in soft pink and white, holding hearts for a cozy glow.</p>
+                <button class="add-to-cart" data-id="7">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im8.jpg" alt="Sweet Indulgence Candle" class="product-image">
+            <div class="product-info">
+                <h3>Sweet Indulgence</h3>
+                <div class="price">$20.99</div>
+                <p class="description">A delightful dessert candle with pink and white chocolate pieces, perfect for sweet relaxation.</p>
+                <button class="add-to-cart" data-id="8">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im9.jpg" alt="Ocean Breeze Candle" class="product-image">
+            <div class="product-info">
+                <h3>Ocean Breeze</h3>
+                <div class="price">$30.99</div>
+                <p class="description">Minty blue candles with seashells and starfish, bringing the beach to your home.</p>
+                <button class="add-to-cart" data-id="9">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im10.jpg" alt="Seashell Glow Candle" width="300" height="300" loading="lazy" aria-label="Bougie parfumée Seashell Glow" class="product-image">
+            <div class="product-info">
+                <h3>Seashell Glow</h3>
+                <div class="price">$35.99</div>
+                <p class="description">Ocean-inspired candles in shell holders, adorned with shells for a coastal charm.</p>
+                <button class="add-to-cart" data-id="10">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im11.jpg" alt="Coffee Chill Candle" class="product-image">
+            <div class="product-info">
+                <h3>Coffee Chill</h3>
+                <div class="price">$32.99</div>
+                <p class="description">Rich cold brew coffee candles with ice cube details, ideal for caffeine lovers.</p>
+                <button class="add-to-cart" data-id="11">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im12.jpg" alt="Mocha Dream Candle" class="product-image">
+            <div class="product-info">
+                <h3>Mocha Dream</h3>
+                <div class="price">$31.99</div>
+                <p class="description">Cozy coffee-layered candles in mugs, sprinkled with beans for a warm vibe.</p>
+                <button class="add-to-cart" data-id="12">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/IMG-20250402-WA0001.jpg" alt="Sweet Serenity Candle" class="product-image">
+            <div class="product-info">
+                <h3>Sweet Serenity</h3>
+                <div class="price">$27.99</div>
+                <p class="description">Warm milk and honey candle, offering a soothing glow for relaxation.</p>
+                <button class="add-to-cart" data-id="13" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/IMG-20250402-WA0002.jpg" alt="Garden Charm Candle" class="product-image">
+            <div class="product-info">
+                <h3>Garden Charm</h3>
+                <div class="price">$22.99</div>
+                <p class="description">Delicate floral and succulent candles in glass domes, capturing nature’s beauty.</p>
+                <button class="add-to-cart"  data-id="14">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/IMG-20250402-WA0003.jpg" alt="Romantic Whimsy Candle" class="product-image">
+            <div class="product-info">
+                <h3>Romantic Whimsy</h3>
+                <div class="price">$34.99</div>
+                <p class="description">Pink love spell candles with heart toppings, perfect for a romantic vibe.</p>
+                <button class="add-to-cart" data-id="15">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/IMG-20250402-WA0004.jpg" alt="Vanilla Bean Candle" class="product-image">
+            <div class="product-info">
+                <h3>Vanilla Bean</h3>
+                <div class="price">$19.99</div>
+                <p class="description">Rich Madagascar vanilla with a hint of caramel for a warm, comforting aroma.</p>
+                <button class="add-to-cart" data-id="16">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/IMG-20250402-WA0005.jpg" alt="Ribbed Harmony Candle" class="product-image">
+            <div class="product-info">
+                <h3>Ribbed Harmony</h3>
+                <div class="price">$18.99</div>
+                <p class="description">Stylish ribbed candles in purple and cream, perfect for modern decor.</p>
+                <button class="add-to-cart" data-id="17" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/IMG-20250402-WA0006.jpg" alt="Daisy Delight Candle" class="product-image">
+            <div class="product-info">
+                <h3>Daisy Delight</h3>
+                <div class="price">$29.99</div>
+                <p class="description">Charming daisy-topped lavender candles, set on vintage paper for a nostalgic vibe.</p>
+                <button class="add-to-cart" data-id="18">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im13.jpg" alt="Berry Delight Candle" class="product-image">
+            <div class="product-info">
+                <h3>Berry Delight</h3>
+                <div class="price">$25.99</div>
+                <p class="description">Juicy blueberry-scented candles with a creamy twist, perfect for a sweet escape.</p>
+                <button class="add-to-cart" data-id="19" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im14.jpg" alt="Spice Charm Candle" width="300" height="300" loading="lazy" aria-label="Bougie parfumée Spice Charm" class="product-image">
+            <div class="product-info">
+                <h3>Spice Charm</h3>
+                <div class="price">$27.99</div>
+                <p class="description">Warm cinnamon stick candle with a cozy, inviting glow for relaxation.</p>
+                <button class="add-to-cart" data-id="20" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im15.jpg" alt="Café Aroma Candle" class="product-image">
+            <div class="product-info">
+                <h3>Café Aroma</h3>
+                <div class="price">$39.99</div>
+                <p class="description">Bold coffee bean candles, capturing the rich scent of São Paulo brew.</p>
+                <button class="add-to-cart" data-id="21">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im16.jpg" alt="Shore Serenity Candle" class="product-image">
+            <div class="product-info">
+                <h3>Shore Serenity</h3>
+                <div class="price">$38.99</div>
+                <p class="description">Lit seashell candle with sand and shells, evoking a tranquil beach vibe.</p>
+                <button class="add-to-cart" data-id="22">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im17.jpg" alt="Celestial Kiss Candle" class="product-image">
+            <div class="product-info">
+                <h3>Celestial Kiss</h3>
+                <div class="price">$17.99</div>
+                <p class="description">Mystical moon and sun candles with gold accents, perfect for dreamy nights.</p>
+                <button class="add-to-cart" data-id="23">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im18.jpg" alt="Winged Elegance Candle" class="product-image">
+            <div class="product-info">
+                <h3>Winged Elegance</h3>
+                <div class="price">$13.99</div>
+                <p class="description">Delicate butterfly candles in soft hues, set on vintage paper for a timeless glow.</p>
+                <button class="add-to-cart" data-id="24">Add to Cart</button>
+            </div>
+        </div>
+
+        
+        <div class="product-card">
+            <img src="images/im23.jpg" alt="Knot Elegance Candle" class="product-image">
+            <div class="product-info">
+                <h3>Knot Elegance</h3>
+                <div class="price">$20.99</div>
+                <p class="description">Stylish twisted knot candles in neutral tones, perfect for modern decor.</p>
+                <button class="add-to-cart" data-id="29" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im24.jpg" alt="Peony Bloom Candle" class="product-image">
+            <div class="product-info">
+                <h3>Peony Bloom</h3>
+                <div class="price">$22.99</div>
+                <p class="description">Elegant peony candles in white, blush, and brown, adding floral sophistication.</p>
+                <button class="add-to-cart" data-id="30" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im25.jpg" alt="Teddy Charm Candle" class="product-image">
+            <div class="product-info">
+                <h3>Teddy Charm</h3>
+                <div class="price">$27.99</div>
+                <p class="description">Cute teddy bear candles in soft tones, perfect for a cozy decor touch.</p>
+                <button class="add-to-cart" data-id="31" >Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="images/im26.jpg" alt="Swan Grace Candle" class="product-image">
+            <div class="product-info">
+                <h3>Swan Grace</h3>
+                <div class="price">$29.99</div>
+                <p class="description">Stunning black and white swan candles, reflecting elegance on a mirror tray.</p>
+                <button class="add-to-cart" data-id="32" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im27.jpg" alt="Peony Elegance Candle" class="product-image">
+            <div class="product-info">
+                <h3>Peony Elegance</h3>
+                <div class="price">$32.99</div>
+                <p class="description">Stunning pink peony candle in a glass jar, crafted for floral luxury.</p>
+                <button class="add-to-cart" data-id="33">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im28.jpg" alt="Citrus Sunrise Candle" width="300" height="300" loading="lazy" aria-label="Bougie parfumée Citrus Sunrise" class="product-image">
+            <div class="product-info">
+                <h3>Citrus Sunrise</h3>
+                <div class="price">$28.99</div>
+                <p class="description">Bright blend of orange, lemon, and grapefruit essential oils to energize and uplift your space.</p>
+                <button class="add-to-cart" data-id="34">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im29.jpg" alt="Literary Glow Candle" class="product-image">
+            <div class="product-info">
+                <h3>Literary Glow</h3>
+                <div class="price">$36.99</div>
+                <p class="description">Intricate book stack candle, perfect for book lovers seeking a cozy ambiance.</p>
+                <button class="add-to-cart" data-id="35" >Add to Cart</button>
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <img src="images/im19.jpg" alt="Lovers' Flame Candle" class="product-image">
+            <div class="product-info">
+                <h3>Lovers' Flame</h3>
+                <div class="price">$29.99</div>
+                <p class="description">Romantic couple sculpture candles, glowing with love for an intimate ambiance.</p>
+                <button class="add-to-cart" data-id="25" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im20.jpg" alt="Bunny Bliss Candle" class="product-image">
+            <div class="product-info">
+                <h3>Bunny Bliss</h3>
+                <div class="price">$23.99</div>
+                <p class="description">Charming bunny candles with egg decor, perfect for a whimsical touch.</p>
+                <button class="add-to-cart" data-id="26" >Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im21.jpg" alt="Puppy Love Candle" class="product-image">
+            <div class="product-info">
+                <h3>Puppy Love</h3>
+                <div class="price">$28.99</div>
+                <p class="description">Adorable dog candles with elegant ribbons, ideal for a heartfelt celebration.</p>
+                <button class="add-to-cart" data-id="27">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="images/im22.jpg" alt="Poodle Glow Candle" class="product-image">
+            <div class="product-info">
+                <h3>Poodle Glow</h3>
+                <div class="price">$14.99</div>
+                <p class="description">Charming poodle candles with a bow, bringing playful warmth to your space.</p>
+                <button class="add-to-cart" data-id="28" >Add to Cart</button>
+            </div>
+        </div>
+
+
+    </div>
+</section>       
+            
+        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Candle Bliss</h3>
+                <p>Artisan-crafted candles blending nature's purity with eco-conscious passion</p>
+                <ul class="footer-links">
+                    <li><a href="about.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> About Us</a></li>
+                    <li><a href="products.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Shop</a></li>
+                    <li><a href="contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Contact</a></li>
+                    <li><a href="faq.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> FAQ</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <line x1="16" y1="7" x2="16" y2="7"></line>
+                        <line x1="8" y1="17" x2="8" y2="17"></line>
+                    </svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Join Our Newsletter</h3>
+                <p class="newsletter-subtitle">Get <strong>10% off</strong> your first order & exclusive updates</p>
+                <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+                    <div class="input-wrapper">
+                        <input 
+                            type="email" 
+                            id="newsletterEmail"
+                            placeholder="Your email" 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            title="Please enter a valid email address"
+                            required
+                            autocomplete="email"
+                        >
+                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <div class="email-validation-message"></div>
+                    </div>
+                    <button type="submit" aria-label="Subscribe to newsletter" class="submit-btn">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                        <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </button>
+                </form>
+                <div class="newsletter-message"></div>
+                <script>
+                    function handleNewsletterSubmit(event) {
+                        event.preventDefault();
+                        const form = event.target;
+                        const email = form.querySelector('#newsletterEmail').value;
+                        const button = form.querySelector('.submit-btn');
+                        const messageDiv = document.querySelector('.newsletter-message');
+                        
+                        // Simulate API call
+                        button.classList.add('loading');
+                        setTimeout(() => {
+                            button.classList.remove('loading');
+                            button.classList.add('success');
+                            messageDiv.innerHTML = <p class="success">🎉 Welcome aboard! Check your inbox for your 10% discount code.</p>;
+                            form.reset();
+                            
+                            // Reset button state after 3s
+                            setTimeout(() => {
+                                button.classList.remove('success');
+                            }, 3000);
+                        }, 1500);
+                    }
+
+                    // Real-time email validation
+                    const emailInput = document.getElementById('newsletterEmail');
+                    const validationMessage = document.querySelector('.email-validation-message');
+                    
+                    emailInput.addEventListener('input', function() {
+                        if (this.validity.valid) {
+                            validationMessage.textContent = '';
+                            this.classList.remove('invalid');
+                            this.classList.add('valid');
+                        } else {
+                            this.classList.remove('valid');
+                            this.classList.add('invalid');
+                            if (this.value.length > 0) {
+                                validationMessage.textContent = 'Please enter a valid email address';
+                            }
+                        }
+                    });
+                </script>
+                <style>
+                    .newsletter-form {
+                        position: relative;
+                        max-width: 400px;
+                    }
+                    
+                    .input-wrapper {
+                        position: relative;
+                        margin-bottom: 1rem;
+                    }
+                    
+                    .newsletter-form input {
+                        width: 100%;
+                        padding: 12px 40px 12px 15px;
+                        border: 2px solid rgba(255,255,255,0.1);
+                        border-radius: 8px;
+                        background: rgba(255,255,255,0.05);
+                        color: #fff;
+                        font-size: 16px;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .newsletter-form input:focus {
+                        border-color: #c17f59;
+                        outline: none;
+                        box-shadow: 0 0 0 3px rgba(193, 127, 89, 0.2);
+                    }
+                    
+                    .newsletter-form input.valid {
+                        border-color: #4CAF50;
+                    }
+                    
+                    .newsletter-form input.invalid {
+                        border-color: #f44336;
+                    }
+                    
+                    .email-icon {
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: rgba(255,255,255,0.5);
+                        pointer-events: none;
+                    }
+                    
+                    .submit-btn {
+                        width: 44px;
+                        height: 44px;
+                        border-radius: 50%;
+                        background: #c17f59;
+                        border: none;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    
+                    .submit-btn:hover {
+                        background: #d4956b;
+                        transform: scale(1.05);
+                    }
+                    
+                    .submit-btn svg {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .submit-btn .success-icon {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0);
+                    }
+                    
+                    .submit-btn.success .arrow-icon {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0);
+                    }
+                    
+                    .submit-btn.success .success-icon {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                    
+                    .submit-btn.loading {
+                        animation: pulse 1.5s infinite;
+                    }
+                    
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(0.95); }
+                        100% { transform: scale(1); }
+                    }
+                    
+                    .email-validation-message {
+                        position: absolute;
+                        bottom: -20px;
+                        left: 0;
+                        font-size: 12px;
+                        color: #f44336;
+                    }
+                    
+                    .newsletter-message {
+                        margin-top: 1rem;
+                        font-size: 14px;
+                    }
+                    
+                    .newsletter-message .success {
+                        color: #4CAF50;
+                        animation: fadeIn 0.3s ease;
+                    }
+                    
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(10px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>2024 Candle Bliss. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Product data
+        const products = [
+            { id: 1, name: "Enchanted Garden", price: 20.99, scent: "Garden" },
+            { id: 2, name: "Autumn Forest", price: 21.99, scent: "Garden" },
+            { id: 3, name: "Divine Elegance", price: 18.99, scent: "Sweet" },
+            { id: 4, name: "Daisy Glow", price: 17.99, scent: "Sweet" },
+            { id: 5, name: "Fairy Whisper", price: 25.99, scent: "Ocean" },
+            { id: 6, name: "Mom's Bliss", price: 23.99, scent: "Bliss" },
+            { id: 7, name: "Bear Hug", price: 27.99, scent: "Animals" },
+            { id: 8, name: "Sweet Indulgence", price: 20.99, scent: "Sweet" },
+            { id: 9, name: "Ocean Breeze", price: 30.99, scent: "Ocean" },
+            { id: 10, name: "Seashell Glow", price: 35.99, scent: "Ocean" },
+            { id: 11, name: "Coffee Chill", price: 32.99, scent: "Coffee" },
+            { id: 12, name: "Mocha Dream", price: 31.99, scent: "Coffee" },
+            { id: 13, name: "Sweet Serenity", price: 27.99, scent: "Sweet" },
+            { id: 14, name: "Garden Charm", price: 22.99, scent: "Garden" },
+            { id: 15, name: "Romantic Whimsy", price: 34.99, scent: "Romantic" },
+            { id: 16, name: "Vanilla Bean", price: 19.99, scent: "Vanilla" },
+            { id: 17, name: "Ribbed Harmony", price: 18.99, scent: "Vanilla" },
+            { id: 18, name: "Daisy Delight", price: 29.99, scent: "Sweet" },
+            { id: 19, name: "Berry Delight", price: 25.99, scent: "Berry" },
+            { id: 20, name: "Spice Charm", price: 27.99, scent: "Cinnamon" },
+            { id: 21, name: "Café Aroma", price: 39.99, scent: "Coffee" },
+            { id: 22, name: "Shore Serenity", price: 38.99, scent: "Ocean" },
+            { id: 23, name: "Celestial Kiss", price: 17.99, scent: "Romantic" },
+            { id: 24, name: "Winged Elegance", price: 13.99, scent: "Sweet" },
+            { id: 25, name: "Lovers' Flame", price: 29.99, scent: "Romantic" },
+            { id: 26, name: "Bunny Bliss", price: 23.99, scent: "Animals" },
+            { id: 27, name: "Puppy Love", price: 28.99, scent: "Animals" },
+            { id: 28, name: "Poodle Glow", price: 14.99, scent: "Animals" },
+            { id: 29, name: "Knot Elegance", price: 20.99, scent: "Sweet" },
+            { id: 30, name: "Peony Bloom", price: 22.99, scent: "Sweet" },
+            { id: 31, name: "Teddy Charm", price: 27.99, scent: "Animals" },
+            { id: 32, name: "Swan Grace", price: 29.99, scent: "Animals" },
+            { id: 33, name: "Peony Elegance", price: 32.99, scent: "Sweet" },
+            { id: 34, name: "Citrus Sunrise", price: 28.99, scent: "Garden" },
+            { id: 35, name: "Literary Glow", price: 36.99, scent: "Books" }
+        ];
+    
+        // DOM elements
+        const filterButton = document.getElementById('filter-button');
+        const resetButton = document.getElementById('reset-button');
+        const scentFilter = document.getElementById('filter');
+        const priceFilter = document.getElementById('max-price');
+        const cartCount = document.querySelector('.cart-count');
+        const productCards = document.querySelectorAll('.product-card');
+    
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        updateCartCount();
+    
+        // Add to cart function
+        function addToCart(e) {
+            const button = e.currentTarget;
+            const productId = parseInt(button.getAttribute('data-id'));
+            const product = products.find(p => p.id === productId);
+    
+            if (!product) {
+                console.error('Product not found');
+                return;
+            }
+    
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+    
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+    
+            // Visual feedback
+            button.textContent = 'Added!';
+            button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            button.disabled = true;
+    
+            setTimeout(() => {
+                button.textContent = 'Add to Cart';
+                button.style.background = 'linear-gradient(135deg, var(--primary-purple), var(--primary-blue))';
+                button.disabled = false;
+            }, 1000);
+        }
+    
+        // Update cart count
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = count;
+            cartCount.style.display = count > 0 ? 'flex' : 'none';
+        }
+    
+        // Filter products
+        function filterProducts() {
+            const selectedScent = scentFilter.value;
+            const maxPrice = parseFloat(priceFilter.value);
+    
+            productCards.forEach(card => {
+                const productId = parseInt(card.querySelector('.add-to-cart').getAttribute('data-id'));
+                const product = products.find(p => p.id === productId);
+                
+                const scentMatch = selectedScent ? product.scent === selectedScent : true;
+                const priceMatch = !isNaN(maxPrice) ? product.price <= maxPrice : true;
+                
+                card.style.display = scentMatch && priceMatch ? '' : 'none';
+            });
+        }
+    
+        // Reset filters
+        function resetFilters() {
+            scentFilter.value = '';
+            priceFilter.value = '';
+            productCards.forEach(card => {
+                card.style.display = '';
+            });
+        }
+    
+        // Attach event listeners
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+    
+        filterButton.addEventListener('click', filterProducts);
+        resetButton.addEventListener('click', resetFilters);
+    
+        // Initial cart count update
+        updateCartCount();
+    </script>
+</body>
+</html>

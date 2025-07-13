@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Candle Bliss</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+                .nav-links {
+                gap: 1rem;
+            }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        :root {
+            --primary-purple: #c8a165;
+            --primary-blue: #d2b48c;
+            --light-purple: #e8cfae;
+            --light-blue: #f0d8b8;
+            --background: #f8f3ef;
+            --card-bg: #ffffff;
+            --text-dark: #4a4031;
+            --text-light: #8b7d6b;
+            --shadow-sm: 0 2px 4px rgba(200, 161, 101, 0.05);
+            --shadow-md: 0 4px 8px rgba(200, 161, 101, 0.08);
+            --shadow-lg: 0 8px 16px rgba(200, 161, 101, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin:0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+
+          /* Main Container */
+          main {
+            padding: 5rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Background Elements */
+        .contact-bg-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .bg-element-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-purple);
+            top: -50px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-element-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-blue);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, 20px) rotate(5deg); }
+            50% { transform: translate(-20px, 10px) rotate(-5deg); }
+            75% { transform: translate(10px, -20px) rotate(3deg); }
+        }
+
+        /* Header Section */
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 2px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            perspective: 1000px;
+        }
+
+        @media (min-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Contact Form - Advanced */
+        .contact-form-container {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(200, 161, 101, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            border: 1px solid rgba(200, 161, 101, 0.1);
+        }
+
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(200, 161, 101, 0.03), rgba(210, 180, 140, 0.03));
+            z-index: -1;
+        }
+
+        .contact-form-container:hover {
+            transform: translateY(-5px) rotateX(1deg) rotateY(1deg);
+            box-shadow: 0 25px 50px rgba(200, 161, 101, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: var(--transition);
+            transform-origin: left center;
+        }
+
+        .form-group.focused label {
+            color: var(--primary-purple);
+            transform: translateY(-5px) scale(0.95);
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid rgba(200, 161, 101, 0.3);
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.8);
+            font-family: 'Inter', sans-serif;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(200, 161, 101, 0.2), 
+                        inset 0 1px 3px rgba(0, 0, 0, 0.05);
+            background-color: white;
+        }
+
+        textarea.input-field {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        /* Animated Submit Button */
+        .submit-btn-wrapper {
+            position: relative;
+            margin-top: 2rem;
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+
+        .submit-btn {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 1.25rem 2.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            z-index: 1;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(200, 161, 101, 0.3);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200, 161, 101, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+
+        .submit-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(16, 185, 129, 0.1);
+            color: #065f46;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            backdrop-filter: blur(5px);
+            animation: fadeInUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contact Info - Advanced */
+        .contact-info-container {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(200, 161, 101, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(200, 161, 101, 0.1);
+        }
+
+        .contact-info-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(200, 161, 101, 0.03), rgba(210, 180, 140, 0.03));
+            z-index: -1;
+        }
+
+        .contact-info-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-info-header::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 2px;
+        }
+
+        /* Info Item with Hover Effect */
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(200, 161, 101, 0.1);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(200, 161, 101, 0.1);
+            background: white;
+        }
+
+        .info-icon {
+            margin-right: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(200, 161, 101, 0.3);
+        }
+
+        .info-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .info-content h3 {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .info-content p, .info-content a {
+            color: var(--text-light);
+            line-height: 1.7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-content a:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Business Hours with Animation */
+        .business-hours {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px dashed rgba(200, 161, 101, 0.3);
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(200, 161, 101, 0.05);
+            transition: var(--transition);
+        }
+
+        .hours-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            main {
+                padding: 3rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-form-container,
+            .contact-info-container {
+                padding: 2rem;
+            }
+            
+            .info-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 1rem;
+            }
+        }
+
+
+        footer {
+            background: #463426;
+            color: white;
+            padding: 3rem 0 0;
+            margin: 0;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-links svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes countUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .footer-col h3 {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #c17f59;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-col h3:hover::after {
+            width: 80px;
+        }
+        .logo img{
+            width: 30px;
+           height: 50px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav>
+        <div class="logo">
+            <img src="images/logo o sf.png" alt="">
+            <span>Candle Bliss</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html" class="cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <div class="contact-bg-element bg-element-1"></div>
+        <div class="contact-bg-element bg-element-2"></div>
+        
+        <div class="contact-header">
+            <h1>Let's Illuminate Your Experience</h1>
+            <p class="contact-subtitle">
+                Our team is ready to answer your questions about our handcrafted candles. 
+                Reach out and we'll respond within 24 hours.
+            </p>
+        </div>
+        
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <div id="success-message" class="success-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Thank you! Your message has been sent successfully. We'll get back to you soon.
+                </div>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="input-field" required placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="input-field" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" class="input-field" required placeholder="How can we help you?"></textarea>
+                    </div>
+                    
+                    <div class="submit-btn-wrapper">
+                        <button type="submit" class="submit-btn" id="submit-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info-container">
+                <h2 class="contact-info-header">Contact Details</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:official.candle.bliss@gmail.com">official.candle.bliss@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="info-content">
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+212600000000">+212 600-000000</a></p>
+                        <p>Customer Support: 9am-6pm GMT</p>
+                    </div>
+                </div>
+                
+                <div class="business-hours">
+                    <h3>Business Hours</h3>
+                    <ul class="hours-list">
+                        <li><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</li>
+                        <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Candle Bliss</h3>
+                <p>Artisan-crafted candles blending nature's purity with eco-conscious passion</p>
+                <ul class="footer-links">
+                    <li><a href="about.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> About Us</a></li>
+                    <li><a href="products.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Shop</a></li>
+                    <li><a href="contact.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Contact</a></li>
+                    <li><a href="faq.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> FAQ</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <line x1="16" y1="7" x2="16" y2="7"></line>
+                        <line x1="8" y1="17" x2="8" y2="17"></line>
+                    </svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Join Our Newsletter</h3>
+                <p class="newsletter-subtitle">Get <strong>10% off</strong> your first order & exclusive updates</p>
+                <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+                    <div class="input-wrapper">
+                        <input 
+                            type="email" 
+                            id="newsletterEmail"
+                            placeholder="Your email" 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            title="Please enter a valid email address"
+                            required
+                            autocomplete="email"
+                        >
+                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <div class="email-validation-message"></div>
+                    </div>
+                    <button type="submit" aria-label="Subscribe to newsletter" class="submit-btn">
+                        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                        <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </button>
+                </form>
+                <div class="newsletter-message"></div>
+                <script>
+                    function handleNewsletterSubmit(event) {
+                        event.preventDefault();
+                        const form = event.target;
+                        const email = form.querySelector('#newsletterEmail').value;
+                        const button = form.querySelector('.submit-btn');
+                        const messageDiv = document.querySelector('.newsletter-message');
+                        
+                        // Simulate API call
+                        button.classList.add('loading');
+                        setTimeout(() => {
+                            button.classList.remove('loading');
+                            button.classList.add('success');
+                            messageDiv.innerHTML = `<p class="success">🎉 Welcome aboard! Check your inbox for your 10% discount code.</p>`;
+                            form.reset();
+                            
+                            // Reset button state after 3s
+                            setTimeout(() => {
+                                button.classList.remove('success');
+                            }, 3000);
+                        }, 1500);
+                    }
+
+                    // Real-time email validation
+                    const emailInput = document.getElementById('newsletterEmail');
+                    const validationMessage = document.querySelector('.email-validation-message');
+                    
+                    emailInput.addEventListener('input', function() {
+                        if (this.validity.valid) {
+                            validationMessage.textContent = '';
+                            this.classList.remove('invalid');
+                            this.classList.add('valid');
+                        } else {
+                            this.classList.remove('valid');
+                            this.classList.add('invalid');
+                            if (this.value.length > 0) {
+                                validationMessage.textContent = 'Please enter a valid email address';
+                            }
+                        }
+                    });
+                </script>
+                <style>
+                    .newsletter-form {
+                        position: relative;
+                        max-width: 400px;
+                    }
+                    
+                    .input-wrapper {
+                        position: relative;
+                        margin-bottom: 1rem;
+                    }
+                    
+                    .newsletter-form input {
+                        width: 100%;
+                        padding: 12px 40px 12px 15px;
+                        border: 2px solid rgba(255,255,255,0.1);
+                        border-radius: 8px;
+                        background: rgba(255,255,255,0.05);
+                        color: #fff;
+                        font-size: 16px;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .newsletter-form input:focus {
+                        border-color: #c17f59;
+                        outline: none;
+                        box-shadow: 0 0 0 3px rgba(193, 127, 89, 0.2);
+                    }
+                    
+                    .newsletter-form input.valid {
+                        border-color: #4CAF50;
+                    }
+                    
+                    .newsletter-form input.invalid {
+                        border-color: #f44336;
+                    }
+                    
+                    .email-icon {
+                        position: absolute;
+                        right: 12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: rgba(255,255,255,0.5);
+                        pointer-events: none;
+                    }
+                    
+                    .submit-btn {
+                        width: 44px;
+                        height: 44px;
+                        border-radius: 50%;
+                        background: #c17f59;
+                        border: none;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    
+                    .submit-btn:hover {
+                        background: #d4956b;
+                        transform: scale(1.05);
+                    }
+                    
+                    .submit-btn svg {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .submit-btn .success-icon {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0);
+                    }
+                    
+                    .submit-btn.success .arrow-icon {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0);
+                    }
+                    
+                    .submit-btn.success .success-icon {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                    
+                    .submit-btn.loading {
+                        animation: pulse 1.5s infinite;
+                    }
+                    
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(0.95); }
+                        100% { transform: scale(1); }
+                    }
+                    
+                    .email-validation-message {
+                        position: absolute;
+                        bottom: -20px;
+                        left: 0;
+                        font-size: 12px;
+                        color: #f44336;
+                    }
+                    
+                    .newsletter-message {
+                        margin-top: 1rem;
+                        font-size: 14px;
+                    }
+                    
+                    .newsletter-message .success {
+                        color: #4CAF50;
+                        animation: fadeIn 0.3s ease;
+                    }
+                    
+                    @keyframes fadeIn {
+                        from { opacity: 0; transform: translateY(10px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>2024 Candle Bliss. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Ripple Effect for Submit Button
+        document.getElementById('submit-button').addEventListener('click', function(e) {
+            // Create ripple element
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            
+            // Position the ripple
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+            
+            // Add ripple to button
+            this.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // Form Submission with Animation
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !message) {
+                // Shake animation for empty fields
+                const formGroups = document.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    if ((group.querySelector('input') && !group.querySelector('input').value.trim()) || 
+                        (group.querySelector('textarea') && !group.querySelector('textarea').value.trim())) {
+                        group.style.animation = 'shake 0.5s';
+                        setTimeout(() => {
+                            group.style.animation = '';
+                        }, 500);
+                    }
+                });
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                const emailGroup = document.querySelector('#email').closest('.form-group');
+                emailGroup.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    emailGroup.style.animation = '';
+                }, 500);
+                return;
+            }
+            
+            // Show success message
+            const successMessage = document.getElementById('success-message');
+            successMessage.style.display = 'block';
+            
+            // Button animation
+            const submitBtn = document.getElementById('submit-button');
+            submitBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check-icon">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+                Message Sent!
+            `;
+            submitBtn.style.pointerEvents = 'none';
+            
+            // Reset form and animations after delay
+            setTimeout(() => {
+                this.reset();
+                successMessage.style.display = 'none';
+                submitBtn.innerHTML = `
+                    Send Message
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                `;
+                submitBtn.style.pointerEvents = 'auto';
+            }, 3000);
+            
+            // Here you would typically send the form data to a server
+            console.log('Form submitted:', { name, email, message });
+        });
+
+        // Add focus class to form groups
+        const inputs = document.querySelectorAll('.input-field');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.closest('.form-group').classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.closest('.form-group').classList.remove('focused');
+                }
+            });
+        });
+
+        // Shake animation for validation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Update cart count from localStorage
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+            document.querySelector('.cart-count').textContent = count;
+        }
+        
+        // Initialize cart count
+        updateCartCount();
+    </script>
+
+</body>
+</html>
