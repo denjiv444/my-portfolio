@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Times New Roman', Times, serif;
+    box-sizing:  border-box;
+}
+.container{
+    padding: 10px;
+    background: linear-gradient(135deg , #153677 , #4e085f);
+    min-height: 100vh;
+    width: 100%;
+}
+.titre img {
+ width: 50px;
+}
+.titre{
+    font-size:larger;
+    width: 100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: grey;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+input{
+    outline: none;
+    border: none;
+    flex: 1;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+}
+button{
+    outline: none;
+    border: none;
+    padding: 16px 50px;
+    background: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 40px;
+    cursor: pointer;
+
+}
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+ul li ::before{
+    content: '';
+    position: absolute;
+    left: 200px;
+    height: 25px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(images/60248-200.png);
+    background-size: cover;
+    background-position: left;
+    top: 12px;
+    left: 0px;
+}
+ul li.checked{
+    color: #555;
+    text-decoration: line-through;
+}
+ul li.checked::before{
+    background-image: url(images/5610944.png);
+ 
+
+}
+ul li span{
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #555;
+    line-height: 40px;
+    text-align: center;
+    color: black;
+    border-radius: 50%;
+}
+ul li span:hover{
+    background-color: cadetblue;
+}
